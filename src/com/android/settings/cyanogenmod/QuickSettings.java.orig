@@ -52,7 +52,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String GENERAL_SETTINGS = "pref_general_settings";
     private static final String STATIC_TILES = "static_tiles";
     private static final String DYNAMIC_TILES = "pref_dynamic_tiles";
-    private static final String PREF_FLIP_QS_TILES = "flip_qs_tiles";
+<<<<<<< HEAD
 
     private MultiSelectListPreference mRingMode;
     private ListPreference mNetworkMode;
@@ -61,7 +61,23 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private PreferenceCategory mGeneralSettings;
     private PreferenceCategory mStaticTiles;
     private PreferenceCategory mDynamicTiles;
-    CheckBoxPreference mFlipQsTiles;
+=======
+    private static final String FLOATING_WINDOW ="floating_window";
+    private static final String DISABLE_PANEL = "disable_quick_settings";
+    private static final String PREF_FLIP_QS_TILES = "flip_qs_tiles";   
+
+    MultiSelectListPreference mRingMode;
+    ListPreference mNetworkMode;
+    ListPreference mScreenTimeoutMode;
+    ListPreference mNoNotificationsPulldown;    
+    CheckBoxPreference mFloatingWindow; 
+    ListPreference mQuickPulldown;
+    PreferenceCategory mGeneralSettings;
+    PreferenceCategory mStaticTiles;
+    PreferenceCategory mDynamicTiles;
+    CheckBoxPreference mDisablePanel;
+    CheckBoxPreference mFlipQsTiles; 
+>>>>>>> f9daa62... Port OnClick Fliptile animation.[2/2]
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -92,13 +108,16 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             updatePulldownSummary(quickPulldownValue);
         }
 
+<<<<<<< HEAD
+=======
         mFloatingWindow = (CheckBoxPreference) prefSet.findPreference(FLOATING_WINDOW);
         mFloatingWindow.setChecked(Settings.System.getInt(resolver, Settings.System.QS_FLOATING_WINDOW, 0) == 1);
 
-        mFlipQsTiles = (CheckBoxPreference) findPreference(PREF_FLIP_QS_TILES);
+	mFlipQsTiles = (CheckBoxPreference) findPreference(PREF_FLIP_QS_TILES);
         mFlipQsTiles.setChecked(Settings.System.getInt(resolver,
                 Settings.System.QUICK_SETTINGS_TILES_FLIP, 1) == 1);
 
+>>>>>>> f9daa62... Port OnClick Fliptile animation.[2/2]
         // Add the sound mode
         mRingMode = (MultiSelectListPreference) prefSet.findPreference(EXP_RING_MODE);
         String storedRingMode = Settings.System.getString(resolver,
@@ -163,17 +182,28 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         }
     }
 
+<<<<<<< HEAD
+=======
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mFlipQsTiles) {
+        if (preference == mFloatingWindow) {
+            Settings.System.putInt(resolver, Settings.System.QS_FLOATING_WINDOW,
+                    mFloatingWindow.isChecked() ? 1 : 0);
+            return true;
+	} else if (preference == mDisablePanel) {
+            Settings.System.putInt(resolver, Settings.System.QS_DISABLE_PANEL,
+                    mDisablePanel.isChecked() ? 0 : 1);
+            setEnablePreferences(mDisablePanel.isChecked());
+	} else if (preference == mFlipQsTiles) {
             Settings.System.putInt(resolver,
                     Settings.System.QUICK_SETTINGS_TILES_FLIP,
                     ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
-            return true;
-        }
+            return true;       
+	}
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
+>>>>>>> f9daa62... Port OnClick Fliptile animation.[2/2]
     private class MultiSelectListPreferenceComparator implements Comparator<String> {
         private MultiSelectListPreference pref;
 

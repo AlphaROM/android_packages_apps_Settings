@@ -33,6 +33,11 @@
             android:title="@string/title_collapse_panel"
             android:summary="@string/summary_collapse_panel" />
 
+	<com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="flip_qs_tiles"
+            android:title="@string/flip_qs_tiles_title"
+            android:summary="@string/flip_qs_tiles_summary" /> 
+
     </PreferenceCategory>
 
     <PreferenceCategory
