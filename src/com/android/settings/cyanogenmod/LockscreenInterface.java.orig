@@ -222,11 +222,16 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                 }
                 hintId = R.string.lockscreen_background_result_not_successful;
             }
+<<<<<<< HEAD
+            Toast.makeText(getActivity(),
+                    getResources().getString(hintId), Toast.LENGTH_LONG).show();
+=======
 
 	    if (mLockscreenHideInitialPageHints != null) {
                 mLockscreenHideInitialPageHints.setChecked(Settings.System.getInt(cr,
                         Settings.System.LOCKSCREEN_HIDE_INITIAL_PAGE_HINTS, 0) == 1);
             } 
+>>>>>>> 96f8c35... Lock Screen - Option to hide initial page hints (2/2)
         }
     }
 
