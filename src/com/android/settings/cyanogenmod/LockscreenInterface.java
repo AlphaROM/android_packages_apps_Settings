@@ -78,18 +78,8 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private ListPreference mBatteryStatus;
     private CheckBoxPreference mEnableWidgets;
     private CheckBoxPreference mEnableCamera;
-<<<<<<< HEAD
-=======
-    private CheckBoxPreference mLockscreenHideInitialPageHints; 
-    private SeekBarPreference mBgAlpha;
 
-    private boolean mIsScreenLarge;
-
-    private Activity mActivity;
-    private ContentResolver mResolver;
-    private File wallpaperImage;
-    private File wallpaperTemporary;  
->>>>>>> 96f8c35... Lock Screen - Option to hide initial page hints (2/2)
+    private CheckBoxPreference mLockscreenHideInitialPageHints;
 
     private File mWallpaperImage;
     private File mWallpaperTemporary;
@@ -223,10 +213,13 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                 hintId = R.string.lockscreen_background_result_not_successful;
             }
 
+            Toast.makeText(getActivity(),
+                    getResources().getString(hintId), Toast.LENGTH_LONG).show();
+
 	    if (mLockscreenHideInitialPageHints != null) {
                 mLockscreenHideInitialPageHints.setChecked(Settings.System.getInt(cr,
                         Settings.System.LOCKSCREEN_HIDE_INITIAL_PAGE_HINTS, 0) == 1);
-            } 
+            }
         }
     }
 
