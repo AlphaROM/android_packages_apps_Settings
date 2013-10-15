@@ -27,6 +27,7 @@ import android.content.ContentResolver;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.ListPreference;
+import android.preference.CheckBoxPreference;
 import android.preference.MultiSelectListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
@@ -92,8 +93,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             updatePulldownSummary(quickPulldownValue);
         }
 
-        mFloatingWindow = (CheckBoxPreference) prefSet.findPreference(FLOATING_WINDOW);
-        mFloatingWindow.setChecked(Settings.System.getInt(resolver, Settings.System.QS_FLOATING_WINDOW, 0) == 1);
+        
 
         mFlipQsTiles = (CheckBoxPreference) findPreference(PREF_FLIP_QS_TILES);
         mFlipQsTiles.setChecked(Settings.System.getInt(resolver,

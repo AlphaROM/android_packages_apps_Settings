@@ -215,7 +215,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
 
             Toast.makeText(getActivity(),
                     getResources().getString(hintId), Toast.LENGTH_LONG).show();
-
+ContentResolver cr = getActivity().getContentResolver();
 	    if (mLockscreenHideInitialPageHints != null) {
                 mLockscreenHideInitialPageHints.setChecked(Settings.System.getInt(cr,
                         Settings.System.LOCKSCREEN_HIDE_INITIAL_PAGE_HINTS, 0) == 1);
