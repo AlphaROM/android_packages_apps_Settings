@@ -42,7 +42,6 @@ import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceCategory;
-import android.preference.PreferenceGroup;  
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.util.Log;
