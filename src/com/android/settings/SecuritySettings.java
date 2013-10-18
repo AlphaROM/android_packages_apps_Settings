@@ -91,8 +91,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String KEY_NOTIFICATION_ACCESS = "manage_notification_access";
     private static final String PACKAGE_MIME_TYPE = "application/vnd.android.package-archive";
 
-    private static final String BATTERY_AROUND_LOCKSCREEN_RING = "battery_around_lockscreen_ring"; 
-
     // CyanogenMod Additions
     private static final String SLIDE_LOCK_TIMEOUT_DELAY = "slide_lock_timeout_delay";
     private static final String SLIDE_LOCK_SCREENOFF_DELAY = "slide_lock_screenoff_delay";
@@ -125,9 +123,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private CheckBoxPreference mPowerButtonInstantlyLocks;
 
     private Preference mNotificationAccess;
-    
-
-    private CheckBoxPreference mLockRingBattery; 
 
     private boolean mIsPrimary;
 
@@ -258,12 +253,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
             mSlideLockScreenOffDelay.setValue(String.valueOf(slideScreenOffDelay));
             updateSlideAfterScreenOffSummary();
             mSlideLockScreenOffDelay.setOnPreferenceChangeListener(this);
-
-	    // Add the additional Omni settings
-            mLockRingBattery = (CheckBoxPreference) root
-                    .findPreference(BATTERY_AROUND_LOCKSCREEN_RING);
-            mLockRingBattery.setChecked(Settings.System.getInt(resolver,
-                    Settings.System.BATTERY_AROUND_LOCKSCREEN_RING, 0) == 1); 
         }
 
         if (isCmSecurity) {
@@ -744,9 +733,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
             } else {
                 setNonMarketAppsAllowed(false);
             }
-	} else if (preference == mLockRingBattery) {
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.BATTERY_AROUND_LOCKSCREEN_RING, isToggled(preference) ? 1 : 0); 
         } else if (KEY_TOGGLE_VERIFY_APPLICATIONS.equals(key)) {
             Settings.Global.putInt(getContentResolver(), Settings.Global.PACKAGE_VERIFIER_ENABLE,
                     mToggleVerifyApps.isChecked() ? 1 : 0);
