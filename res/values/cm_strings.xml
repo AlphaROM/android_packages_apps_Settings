@@ -1025,8 +1025,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="lockscreen_hide_initial_page_hints_title">Hide initial page hints</string>
     <string name="lockscreen_hide_initial_page_hints_summary">Disable hints on left and right when the screen is turned on.</string>
 
-    <!-- OnClick Fliptile animation -->
-    <string name="flip_qs_tiles_title">Flip tiles</string>
-    <string name="flip_qs_tiles_summary">Flips the tiles on touch</string>
- 
+
+    <!-- Lockscreen ring battery -->
+    <string name="battery_around_lockscreen_ring">Battery level around lock ring</string> 
+
+
 </resources>
